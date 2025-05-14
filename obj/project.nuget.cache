@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3ZG4IqjzZk4=",
+  "dgSpecHash": "8iE+thHxXgk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\labsfiap\\Desktop\\.NET\\Mottu\\Mottu.csproj",
+  "projectFilePath": "C:\\Users\\labsfiap\\Desktop\\.net\\Mottu\\Mottu.csproj",
   "expectedPackageFiles": [
     "C:\\Softwares\\Nuget\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Softwares\\Nuget\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
@@ -19,6 +19,7 @@
     "C:\\Softwares\\Nuget\\microsoft.entityframeworkcore.analyzers\\9.0.5\\microsoft.entityframeworkcore.analyzers.9.0.5.nupkg.sha512",
     "C:\\Softwares\\Nuget\\microsoft.entityframeworkcore.design\\9.0.5\\microsoft.entityframeworkcore.design.9.0.5.nupkg.sha512",
     "C:\\Softwares\\Nuget\\microsoft.entityframeworkcore.relational\\9.0.5\\microsoft.entityframeworkcore.relational.9.0.5.nupkg.sha512",
+    "C:\\Softwares\\Nuget\\microsoft.entityframeworkcore.tools\\9.0.5\\microsoft.entityframeworkcore.tools.9.0.5.nupkg.sha512",
     "C:\\Softwares\\Nuget\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Softwares\\Nuget\\microsoft.extensions.caching.abstractions\\9.0.5\\microsoft.extensions.caching.abstractions.9.0.5.nupkg.sha512",
     "C:\\Softwares\\Nuget\\microsoft.extensions.caching.memory\\9.0.5\\microsoft.extensions.caching.memory.9.0.5.nupkg.sha512",

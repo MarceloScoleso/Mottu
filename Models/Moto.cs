@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mottu.Models
+namespace Mottu.Models 
 {
     public class Moto
     {
@@ -8,28 +9,21 @@ namespace Mottu.Models
         public int Id_Moto { get; set; }
 
         [Required]
-        public string Placa { get; set; }
+        public string Placa { get; set; } = string.Empty;
 
         [Required]
-        public string Modelo { get; set; }
+        public string Modelo { get; set; } = string.Empty;
 
         [Required]
         public int Ano { get; set; }
 
         [Required]
-        public string Status_Atual { get; set; }
+        public string Status_Atual { get; set; } = string.Empty;
 
-        // Construtor vazio necessário para o Entity Framework
-        public Moto() { }
+        public int? Id_Sensor { get; set; }
+        public Sensor_IoT? Sensor { get; set; }
 
-        // Construtor com todos os campos usados
-        public Moto(int idMoto, string placa, string modelo, int ano, string statusAtual)
-        {
-            Id_Moto = idMoto;
-            Placa = placa;
-            Modelo = modelo;
-            Ano = ano;
-            Status_Atual = statusAtual;
-        }
-    }
-}
+        public int? Id_Filial { get; set; }
+        public Filial? Filial { get; set; }
+    } 
+} 

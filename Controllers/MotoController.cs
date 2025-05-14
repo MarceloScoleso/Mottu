@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mottu.Data;
 using Mottu.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Mottu.Controllers
 {
@@ -19,15 +19,31 @@ namespace Mottu.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Moto>>> GetAll()
         {
-            return Ok(await _context.Motos.ToListAsync());
+            var motos = await _context.Motos
+                .Include(m => m.Sensor)
+                .Include(m => m.Filial)
+                .ToListAsync();
+            return Ok(motos);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Moto>> GetById(int id)
         {
-            var moto = await _context.Motos.FindAsync(id);
+            var moto = await _context.Motos
+                .Include(m => m.Sensor)
+                .Include(m => m.Filial)
+                .FirstOrDefaultAsync(m => m.Id_Moto == id);
+
             if (moto == null) return NotFound();
             return Ok(moto);
+        }
+
+        [HttpGet("por-status")]
+        public async Task<ActionResult<IEnumerable<Moto>>> GetByStatus([FromQuery] string status)
+        {
+            var motos = await _context.Motos.Where(m => m.Status_Atual == status).ToListAsync();
+            if (!motos.Any()) return NotFound("Nenhuma moto encontrada com esse status.");
+            return Ok(motos);
         }
 
         [HttpPost]
