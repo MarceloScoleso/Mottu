@@ -1,0 +1,14 @@
+C:\Users\ticoj\Mottu\bin\Debug\net9.0\Mottu.exe
+C:\Users\ticoj\Mottu\bin\Debug\net9.0\Mottu.deps.json
+C:\Users\ticoj\Mottu\bin\Debug\net9.0\Mottu.runtimeconfig.json
+C:\Users\ticoj\Mottu\bin\Debug\net9.0\Mottu.dll
+C:\Users\ticoj\Mottu\bin\Debug\net9.0\Mottu.pdb
+C:\Users\ticoj\Mottu\obj\Debug\net9.0\Mottu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ticoj\Mottu\obj\Debug\net9.0\Mottu.AssemblyInfoInputs.cache
+C:\Users\ticoj\Mottu\obj\Debug\net9.0\Mottu.AssemblyInfo.cs
+C:\Users\ticoj\Mottu\obj\Debug\net9.0\Mottu.csproj.CoreCompileInputs.cache
+C:\Users\ticoj\Mottu\obj\Debug\net9.0\Mottu.dll
+C:\Users\ticoj\Mottu\obj\Debug\net9.0\refint\Mottu.dll
+C:\Users\ticoj\Mottu\obj\Debug\net9.0\Mottu.pdb
+C:\Users\ticoj\Mottu\obj\Debug\net9.0\Mottu.genruntimeconfig.cache
+C:\Users\ticoj\Mottu\obj\Debug\net9.0\ref\Mottu.dll
