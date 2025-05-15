@@ -22,8 +22,8 @@ namespace Mottu.Models
     public Filial Filial_Referencia { get; set; } = new Filial();
 
     // Campo auxiliar opcional
-    public string Status_Vaga { get; set; } = "Disponível";
+    public string StatusDescricao { get; set; } = "Disponível";
 
-    public string Filial { get; set; } = "Filial 1";
+public string NomeFilial { get; set; } = "Filial 1";
 }
 }

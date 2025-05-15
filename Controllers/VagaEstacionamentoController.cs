@@ -21,7 +21,7 @@ namespace Mottu.Controllers
         {
             return Ok(await _context.VagasEstacionamento
                                     .Include(v => v.Status)  // Inclui o Status relacionado
-                                    .Include(v => v.Filial)  // Inclui a Filial relacionada
+                                    .Include(v => v.Filial_Referencia)  // Inclui a Filial relacionada
                                     .ToListAsync());
         }
 
@@ -30,7 +30,7 @@ namespace Mottu.Controllers
         {
             var vaga = await _context.VagasEstacionamento
                                     .Include(v => v.Status)
-                                    .Include(v => v.Filial)
+                                    .Include(v => v.Filial_Referencia)
                                     .FirstOrDefaultAsync(v => v.Id_Vaga == id);
 
             if (vaga == null) return NotFound();

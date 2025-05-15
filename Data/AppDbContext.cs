@@ -19,51 +19,67 @@ namespace Mottu.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Define o schema padrão para o Oracle
             modelBuilder.HasDefaultSchema("RM557481");
 
-            // Relacionamentos adicionais usando Fluent API
+            // Tabela personalizada para Sensor_IoT
+            modelBuilder.Entity<Sensor_IoT>().ToTable("Sensor_IoT");
 
+            // Relacionamento: Moto -> Sensor (opcional)
             modelBuilder.Entity<Moto>()
                 .HasOne(m => m.Sensor)
-                .WithMany()
-                .HasForeignKey(m => m.Id_Sensor);
+                .WithMany(s => s.Motos)
+                .HasForeignKey(m => m.Id_Sensor)
+                .OnDelete(DeleteBehavior.Restrict); // evita delete em cascata
 
-            // Relacionamento com Filial
+            // Relacionamento: Moto -> Filial (opcional)
             modelBuilder.Entity<Moto>()
-                .HasOne(m => m.Filial) // Relação entre Moto e Filial
-                .WithMany() // Filial pode ter várias Motos
-                .HasForeignKey(m => m.Id_Filial) // A chave estrangeira em Moto
-                .OnDelete(DeleteBehavior.Restrict); // Evitar a deleção em cascata, se necessário
+                .HasOne(m => m.Filial)
+                .WithMany()
+                .HasForeignKey(m => m.Id_Filial)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Vaga_Estacionamento -> Filial
             modelBuilder.Entity<Vaga_Estacionamento>()
-                .HasOne(v => v.Filial) // Relação entre Vaga e Filial
-                .WithMany() // Uma Filial pode ter várias Vagas
-                .HasForeignKey(v => v.Id_Filial); // Chave estrangeira em Vaga
+                .HasOne(v => v.Filial_Referencia)
+                .WithMany()
+                .HasForeignKey(v => v.Id_Filial)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Vaga_Estacionamento -> Status_Vaga
             modelBuilder.Entity<Vaga_Estacionamento>()
-                .HasOne(v => v.Status) // Relação entre Vaga e Status
-                .WithMany() // Um Status pode estar em várias Vagas
-                .HasForeignKey(v => v.Id_Status); // Chave estrangeira em Vaga
+                .HasOne(v => v.Status)
+                .WithMany()
+                .HasForeignKey(v => v.Id_Status)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Movimentacao -> Moto
             modelBuilder.Entity<Movimentacao>()
                 .HasOne(m => m.Moto)
                 .WithMany()
-                .HasForeignKey(m => m.Id_Moto);
+                .HasForeignKey(m => m.Id_Moto)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Movimentacao -> Vaga
             modelBuilder.Entity<Movimentacao>()
                 .HasOne(m => m.Vaga)
                 .WithMany()
-                .HasForeignKey(m => m.Id_Vaga);
+                .HasForeignKey(m => m.Id_Vaga)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Movimentacao -> Operador
             modelBuilder.Entity<Movimentacao>()
                 .HasOne(m => m.Operador)
                 .WithMany()
-                .HasForeignKey(m => m.Id_Operador);
+                .HasForeignKey(m => m.Id_Operador)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Log_Acao -> Usuario_Sistema
             modelBuilder.Entity<Log_Acao>()
                 .HasOne(l => l.Usuario)
                 .WithMany()
-                .HasForeignKey(l => l.Id_Usuario);
+                .HasForeignKey(l => l.Id_Usuario)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

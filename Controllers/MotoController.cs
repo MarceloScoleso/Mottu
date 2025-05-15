@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mottu.Data;
 using Mottu.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Mottu.Controllers
 {
@@ -38,6 +41,9 @@ namespace Mottu.Controllers
             return Ok(moto);
         }
 
+        
+    
+
         [HttpGet("por-status")]
         public async Task<ActionResult<IEnumerable<Moto>>> GetByStatus([FromQuery] string status)
         {
@@ -49,8 +55,41 @@ namespace Mottu.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(Moto moto)
         {
+            // Verifica se sensor informado existe
+            if (moto.Id_Sensor.HasValue)
+            {
+                var sensorExistente = await _context.Sensores.FindAsync(moto.Id_Sensor.Value);
+                if (sensorExistente == null)
+                {
+                    return BadRequest($"Sensor com Id {moto.Id_Sensor.Value} não encontrado.");
+                }
+                // Não atribuir a propriedade de navegação para evitar erros
+                moto.Sensor = null;
+            }
+            else
+            {
+                moto.Sensor = null;
+            }
+
+            // Verifica se filial informada existe
+            if (moto.Id_Filial.HasValue)
+            {
+                var filialExistente = await _context.Filiais.FindAsync(moto.Id_Filial.Value);
+                if (filialExistente == null)
+                {
+                    return BadRequest($"Filial com Id {moto.Id_Filial.Value} não encontrada.");
+                }
+                // Não atribuir a propriedade de navegação para evitar erros
+                moto.Filial = null;
+            }
+            else
+            {
+                moto.Filial = null;
+            }
+
             _context.Motos.Add(moto);
             await _context.SaveChangesAsync();
+
             return CreatedAtAction(nameof(GetById), new { id = moto.Id_Moto }, moto);
         }
 
@@ -59,8 +98,49 @@ namespace Mottu.Controllers
         {
             if (id != moto.Id_Moto) return BadRequest();
 
+            // Evitar problemas com propriedades de navegação no update
+            if (moto.Id_Sensor.HasValue)
+            {
+                var sensorExistente = await _context.Sensores.FindAsync(moto.Id_Sensor.Value);
+                if (sensorExistente == null)
+                {
+                    return BadRequest($"Sensor com Id {moto.Id_Sensor.Value} não encontrado.");
+                }
+                moto.Sensor = null;
+            }
+            else
+            {
+                moto.Sensor = null;
+            }
+
+            if (moto.Id_Filial.HasValue)
+            {
+                var filialExistente = await _context.Filiais.FindAsync(moto.Id_Filial.Value);
+                if (filialExistente == null)
+                {
+                    return BadRequest($"Filial com Id {moto.Id_Filial.Value} não encontrada.");
+                }
+                moto.Filial = null;
+            }
+            else
+            {
+                moto.Filial = null;
+            }
+
             _context.Entry(moto).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MotoExists(id))
+                    return NotFound();
+                else
+                    throw;
+            }
+
             return NoContent();
         }
 
@@ -72,7 +152,13 @@ namespace Mottu.Controllers
 
             _context.Motos.Remove(moto);
             await _context.SaveChangesAsync();
+
             return NoContent();
+        }
+
+        private bool MotoExists(int id)
+        {
+            return _context.Motos.Any(e => e.Id_Moto == id);
         }
     }
 }

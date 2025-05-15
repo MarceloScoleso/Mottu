@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "M/Zzg8Y509cbgFaWtvft2+Ot1U8mBJ+lIHHXOWqIOOA=",
+  "Hash": "9Z8+MBLYyr1KgCp5+/8nvNIt7Kr8OQRJsmZfX1I5IlY=",
   "Source": "Mottu",
   "BasePath": "_content/Mottu",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

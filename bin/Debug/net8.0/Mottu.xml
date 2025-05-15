@@ -28,5 +28,41 @@
         <member name="M:Mottu.Migrations.Atualization.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Mottu.Migrations.AjustesModeloVagaEstacionamento">
+            <inheritdoc />
+        </member>
+        <member name="M:Mottu.Migrations.AjustesModeloVagaEstacionamento.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mottu.Migrations.AjustesModeloVagaEstacionamento.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mottu.Migrations.AjustesModeloVagaEstacionamento.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Mottu.Migrations.AddSensorIoTMapping">
+            <inheritdoc />
+        </member>
+        <member name="M:Mottu.Migrations.AddSensorIoTMapping.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mottu.Migrations.AddSensorIoTMapping.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mottu.Migrations.AddSensorIoTMapping.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Mottu.Migrations.AjusteRelacionamentoSensor">
+            <inheritdoc />
+        </member>
+        <member name="M:Mottu.Migrations.AjusteRelacionamentoSensor.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mottu.Migrations.AjusteRelacionamentoSensor.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mottu.Migrations.AjusteRelacionamentoSensor.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

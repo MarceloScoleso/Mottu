@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mottu.Data;
 using Oracle.EntityFrameworkCore.Metadata;
@@ -11,9 +12,11 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace Mottu.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250515034359_AjustesModeloVagaEstacionamento")]
+    partial class AjustesModeloVagaEstacionamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,7 +193,7 @@ namespace Mottu.Migrations
 
                     b.HasKey("Id_Sensor");
 
-                    b.ToTable("Sensor_IoT", "RM557481");
+                    b.ToTable("Sensores", "RM557481");
                 });
 
             modelBuilder.Entity("Mottu.Models.Status_Vaga", b =>
@@ -273,7 +276,7 @@ namespace Mottu.Migrations
                     b.HasOne("Mottu.Models.Usuario_Sistema", "Usuario")
                         .WithMany()
                         .HasForeignKey("Id_Usuario")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Usuario");
@@ -287,9 +290,8 @@ namespace Mottu.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Mottu.Models.Sensor_IoT", "Sensor")
-                        .WithMany("Motos")
-                        .HasForeignKey("Id_Sensor")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .WithMany()
+                        .HasForeignKey("Id_Sensor");
 
                     b.Navigation("Filial");
 
@@ -301,19 +303,19 @@ namespace Mottu.Migrations
                     b.HasOne("Mottu.Models.Moto", "Moto")
                         .WithMany()
                         .HasForeignKey("Id_Moto")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Mottu.Models.Operador", "Operador")
                         .WithMany()
                         .HasForeignKey("Id_Operador")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Mottu.Models.Vaga_Estacionamento", "Vaga")
                         .WithMany()
                         .HasForeignKey("Id_Vaga")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Moto");
@@ -328,23 +330,18 @@ namespace Mottu.Migrations
                     b.HasOne("Mottu.Models.Filial", "Filial_Referencia")
                         .WithMany()
                         .HasForeignKey("Id_Filial")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Mottu.Models.Status_Vaga", "Status")
                         .WithMany()
                         .HasForeignKey("Id_Status")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Filial_Referencia");
 
                     b.Navigation("Status");
-                });
-
-            modelBuilder.Entity("Mottu.Models.Sensor_IoT", b =>
-                {
-                    b.Navigation("Motos");
                 });
 #pragma warning restore 612, 618
         }
