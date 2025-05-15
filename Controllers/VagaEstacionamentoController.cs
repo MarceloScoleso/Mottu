@@ -20,8 +20,8 @@ namespace Mottu.Controllers
         public async Task<ActionResult<IEnumerable<Vaga_Estacionamento>>> GetAll()
         {
             return Ok(await _context.VagasEstacionamento
-                                    .Include(v => v.Status)  // Inclui o Status relacionado
-                                    .Include(v => v.Filial_Referencia)  // Inclui a Filial relacionada
+                                    .Include(v => v.Status) 
+                                    .Include(v => v.Filial_Referencia)  
                                     .ToListAsync());
         }
 

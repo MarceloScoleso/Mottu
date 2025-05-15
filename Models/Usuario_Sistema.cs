@@ -4,7 +4,7 @@ namespace Mottu.Models
 {
     public class Usuario_Sistema
     {
-        [Key] // Define como chave primária
+        [Key] 
         public int ID_USUARIO { get; set; } 
 
         [Required]
