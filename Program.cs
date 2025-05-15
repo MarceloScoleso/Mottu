@@ -1,5 +1,6 @@
 ﻿using Mottu.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,8 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseOracle(builder.Configuration.GetConnectionString("OracleConnection")));
 
-// Adicionando os serviços necessários para o controller
-builder.Services.AddControllers();
+// Adicionando os serviços necessários para o controller com configuração para referência cíclica
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.MaxDepth = 64; // opcional, para aumentar a profundidade máxima
+    });
 
 // Adicionando o Swagger para a documentação da API
 builder.Services.AddEndpointsApiExplorer();
@@ -21,7 +27,6 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API para gestão de motos, filiais, vagas de estacionamento e movimentações."
     });
 
-    // Geração de XML de comentários de documentação (opcional, mas útil)
     var xmlFile = $"{System.AppDomain.CurrentDomain.BaseDirectory}/Mottu.xml";
     if (File.Exists(xmlFile))
     {
@@ -31,7 +36,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// ✅ Swagger habilitado em todos os ambientes (inclusive produção)
+// Swagger habilitado em todos os ambientes
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
