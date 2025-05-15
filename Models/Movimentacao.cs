@@ -9,11 +9,11 @@ namespace Mottu.Models
 
     [Required]
     public int Id_Moto { get; set; }
-    public Moto? Moto { get; set; }  // <-- nullable e sem inicialização
+    public Moto? Moto { get; set; }  
 
     [Required]
     public int Id_Vaga { get; set; }
-    public Vaga_Estacionamento? Vaga { get; set; }  // <-- nullable e sem inicialização
+    public Vaga_Estacionamento? Vaga { get; set; }  
 
     [Required]
     public DateTime Entrada { get; set; }
@@ -22,6 +22,6 @@ namespace Mottu.Models
 
     [Required]
     public int Id_Operador { get; set; }
-    public Operador? Operador { get; set; }  // <-- nullable e sem inicialização
+    public Operador? Operador { get; set; }  
 }
 }

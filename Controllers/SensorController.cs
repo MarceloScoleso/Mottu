@@ -19,7 +19,7 @@ namespace Mottu.Controllers
             _context = context;
         }
 
-        // POST: api/Sensor
+        
         [HttpPost]
         public async Task<ActionResult> CreateSensor(Sensor_IoT sensor)
         {
@@ -29,7 +29,7 @@ namespace Mottu.Controllers
             return CreatedAtAction(nameof(GetSensorById), new { id = sensor.Id_Sensor }, sensor);
         }
 
-        // GET: api/Sensor
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Sensor_IoT>>> GetAllSensors()
         {
@@ -37,7 +37,7 @@ namespace Mottu.Controllers
             return Ok(sensores);
         }
 
-        // GET: api/Sensor/5
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Sensor_IoT>> GetSensorById(int id)
         {
@@ -48,7 +48,7 @@ namespace Mottu.Controllers
             return Ok(sensor);
         }
 
-        // PUT: api/Sensor/5
+        
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateSensor(int id, Sensor_IoT sensor)
         {
@@ -72,7 +72,7 @@ namespace Mottu.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Sensor/5
+        
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteSensor(int id)
         {

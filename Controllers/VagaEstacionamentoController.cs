@@ -41,8 +41,8 @@ namespace Mottu.Controllers
         public async Task<ActionResult<IEnumerable<Vaga_Estacionamento>>> GetByStatus([FromQuery] string status)
         {
             var vagas = await _context.VagasEstacionamento
-                                    .Include(v => v.Status)  // Inclui o Status relacionado
-                                    .Where(v => v.Status.Descricao_Status == status) // Agora filtrando pelo Descricao_Status
+                                    .Include(v => v.Status)  
+                                    .Where(v => v.Status.Descricao_Status == status) 
                                     .ToListAsync();
 
             return Ok(vagas);

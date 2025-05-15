@@ -55,7 +55,7 @@ namespace Mottu.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(Moto moto)
         {
-            // Verifica se sensor informado existe
+        
             if (moto.Id_Sensor.HasValue)
             {
                 var sensorExistente = await _context.Sensores.FindAsync(moto.Id_Sensor.Value);
@@ -63,7 +63,7 @@ namespace Mottu.Controllers
                 {
                     return BadRequest($"Sensor com Id {moto.Id_Sensor.Value} não encontrado.");
                 }
-                // Não atribuir a propriedade de navegação para evitar erros
+                
                 moto.Sensor = null;
             }
             else
@@ -71,7 +71,7 @@ namespace Mottu.Controllers
                 moto.Sensor = null;
             }
 
-            // Verifica se filial informada existe
+            
             if (moto.Id_Filial.HasValue)
             {
                 var filialExistente = await _context.Filiais.FindAsync(moto.Id_Filial.Value);
@@ -79,7 +79,7 @@ namespace Mottu.Controllers
                 {
                     return BadRequest($"Filial com Id {moto.Id_Filial.Value} não encontrada.");
                 }
-                // Não atribuir a propriedade de navegação para evitar erros
+            
                 moto.Filial = null;
             }
             else
@@ -98,7 +98,7 @@ namespace Mottu.Controllers
         {
             if (id != moto.Id_Moto) return BadRequest();
 
-            // Evitar problemas com propriedades de navegação no update
+            
             if (moto.Id_Sensor.HasValue)
             {
                 var sensorExistente = await _context.Sensores.FindAsync(moto.Id_Sensor.Value);
