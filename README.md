@@ -1,37 +1,35 @@
-🏍️ API de Gestão de Movimentação de Motos
+# 🏍️ API de Gestão de Movimentação de Motos
 
-🔍 Descrição
+---
+
+## 🔍 Descrição
 Esta é uma API RESTful desenvolvida para gerenciar a movimentação de motos em estacionamentos.
 O sistema permite o controle eficiente de vagas, operadores, sensores e histórico de movimentações, facilitando a administração e automatizando processos.
 
 Com esta API você pode:
+-Registrar entrada e saída de motos
+-Gerenciar sensores vinculados às motos
+-Consultar movimentações por operador
+-Controlar vagas de estacionamento
 
-Registrar entrada e saída de motos
+---
 
-Gerenciar sensores vinculados às motos
+## 🛠️ Tecnologias Utilizadas
 
-Consultar movimentações por operador
+-.NET 8 / C#
+-ASP.NET Core Web API
+-Entity Framework Core
+-Oracle SQL
+-Swagger (OpenAPI) para documentação interativa
+-Docker
+-Azure CLI (para deploy em nuvem)
 
-Controlar vagas de estacionamento
+---
 
-🛠️ Tecnologias Utilizadas
-.NET 8 / C#
+## 🚀 Rotas Principais da API
 
-ASP.NET Core Web API
+### Movimentação
 
-Entity Framework Core
-
-Oracle SQL
-
-Swagger (OpenAPI) para documentação interativa
-
-Docker
-
-Azure CLI (para deploy em nuvem)
-
-🚀 Rotas Principais da API
-
-Movimentação
 Método	Rota	Descrição
 GET	/api/Movimentacao	Lista todas movimentações
 POST	/api/Movimentacao	Cria nova movimentação
@@ -40,7 +38,8 @@ PUT	/api/Movimentacao/{id}	Atualiza movimentação por ID
 DELETE	/api/Movimentacao/{id}	Deleta movimentação por ID
 GET	/api/Movimentacao/por-operador/{idOperador}	Lista movimentações por operador
 
-Sensor
+### Sensor
+
 Método	Rota	Descrição
 GET	/api/Sensor	Lista todos sensores
 POST	/api/Sensor	Cria novo sensor
@@ -48,39 +47,40 @@ GET	/api/Sensor/{id}	Busca sensor por ID
 PUT	/api/Sensor/{id}	Atualiza sensor por ID
 DELETE	/api/Sensor/{id}	Deleta sensor por ID
 
-Outras entidades como Moto, Operador e Vaga possuem rotas CRUD similares.
+Outras entidades como Moto, Operador e Vaga possuem rotas CRUD similares.*
 
-⚙️ Instalação Local
+---
 
-Pré-requisitos
-.NET 8 SDK
+## ⚙️ Instalação Local
 
-Oracle SQL
+### Pré-requisitos
 
-Visual Studio 2022 ou VS Code
+-.NET 8 SDK
+-Oracle SQL
+-Visual Studio 2022 ou VS Code
 
-Passos para executar localmente
+### Passos para executar localmente
 
-# 1. Clone o repositório
+1. Clone o repositório
 git clone https://github.com/seu-usuario/seu-repositorio.git
 cd seu-repositorio
 
-# 2. Configure a connection string no appsettings.json
+2. Configure a connection string no appsettings.json
 
-# 3. Rode as migrations
+3. Rode as migrations
 dotnet ef database update
 
-# 4. Execute o projeto
+4. Execute o projeto
 dotnet run
-Documentação Interativa (Swagger)
-Acesse em:
-📄 https://localhost:5000/swagger/index.html
 
-☁️ Deploy com Docker e Azure CLI
+5. Acesse a documentação Swagger em:
+https://localhost:5000/swagger/index.html
+
+## ☁️ Deploy com Docker e Azure CLI
 
 Esta seção descreve como provisionar uma VM Linux na Azure, instalar o Docker e fazer o deploy da API como container.
 
-🔧 Variáveis de Ambiente
+### 🔧 Variáveis de Ambiente
 
 RESOURCE_GROUP="mottu-api-rg"
 LOCATION="eastus"
@@ -88,11 +88,11 @@ VM_NAME="mottu-api-vm"
 IMAGE="Ubuntu2204"
 ADMIN_USER="azureuser"
 
-📦 Criar Grupo de Recursos
+### 📦 Criar Grupo de Recursos
 
 az group create --name $RESOURCE_GROUP --location $LOCATION
 
-🖥️ Criar Máquina Virtual
+### 🖥️ Criar Máquina Virtual
 
 az vm create \
   --resource-group $RESOURCE_GROUP \
@@ -101,41 +101,42 @@ az vm create \
   --admin-username $ADMIN_USER \
   --generate-ssh-keys \
   --size Standard_B1s
-🔓 Abrir Portas (HTTP e API)
+  
+### 🔓 Abrir Portas (HTTP e API)
 
-# Porta da API
+Porta da API
 az vm open-port --port 8080 --resource-group $RESOURCE_GROUP --name $VM_NAME
 
-# Porta HTTP padrão
+Porta HTTP padrão
 az vm open-port \
   --port 80 \
   --resource-group $RESOURCE_GROUP \
   --name $VM_NAME \
   --priority 1010
   
-🔐 Conectar na VM
+### 🔐 Conectar na VM
 
 ssh azureuser@<ip-publico-da-vm>
 
-🐳 Instalar e Habilitar Docker
+### 🐳 Instalar e Habilitar Docker
 
 sudo apt update
 sudo apt install -y docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 
-🛠️ Build e Execução do Container
+### 🛠️ Build e Execução do Container
 
-# Build da imagem
+Build da imagem
 docker build -t api-mottu .
 
-# Rodar o container
+Rodar o container
 docker run -d -p 8080:8080 --name api-mottu-container --restart unless-stopped api-mottu
 
-❌ Remover Grupo de Recursos (deleta a VM junto)
+### ❌ Remover Grupo de Recursos (deleta a VM junto)
 
 az group delete --name mottu-api-rg
 
-📬 Contato
+### 📬 Contato
 
 Caso tenha dúvidas ou sugestões, entre em contato com a equipe de desenvolvimento ou abra uma issue no repositório.
