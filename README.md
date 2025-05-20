@@ -7,22 +7,22 @@ Esta é uma API RESTful desenvolvida para gerenciar a movimentação de motos em
 O sistema permite o controle eficiente de vagas, operadores, sensores e histórico de movimentações, facilitando a administração e automatizando processos.
 
 Com esta API você pode:
--Registrar entrada e saída de motos
--Gerenciar sensores vinculados às motos
--Consultar movimentações por operador
--Controlar vagas de estacionamento
+- Registrar entrada e saída de motos
+- Gerenciar sensores vinculados às motos
+- Consultar movimentações por operador
+- Controlar vagas de estacionamento
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
--.NET 8 / C#
--ASP.NET Core Web API
--Entity Framework Core
--Oracle SQL
--Swagger (OpenAPI) para documentação interativa
--Docker
--Azure CLI (para deploy em nuvem)
+- .NET 8 / C#
+- ASP.NET Core Web API
+- Entity Framework Core
+- Oracle SQL
+- Swagger (OpenAPI) para documentação interativa
+- Docker
+- Azure CLI (para deploy em nuvem)
 
 ---
 
@@ -30,24 +30,27 @@ Com esta API você pode:
 
 ### Movimentação
 
-Método	Rota	Descrição
-GET	/api/Movimentacao	Lista todas movimentações
-POST	/api/Movimentacao	Cria nova movimentação
-GET	/api/Movimentacao/{id}	Busca movimentação por ID
-PUT	/api/Movimentacao/{id}	Atualiza movimentação por ID
-DELETE	/api/Movimentacao/{id}	Deleta movimentação por ID
-GET	/api/Movimentacao/por-operador/{idOperador}	Lista movimentações por operador
+| Método | Rota                                         | Descrição                           |
+|--------|----------------------------------------------|-----------------------------------|
+| GET    | /api/Movimentacao                          | Lista todas movimentações          |
+| POST   | /api/Movimentacao                          | Cria nova movimentação             |
+| GET    | /api/Movimentacao/{id}                     | Busca movimentação por ID          |
+| PUT    | /api/Movimentacao/{id}                     | Atualiza movimentação por ID       |
+| DELETE | /api/Movimentacao/{id}                     | Deleta movimentação por ID         |
+| GET    | /api/Movimentacao/por-operador/{idOperador} | Lista movimentações por operador   |
 
 ### Sensor
 
-Método	Rota	Descrição
-GET	/api/Sensor	Lista todos sensores
-POST	/api/Sensor	Cria novo sensor
-GET	/api/Sensor/{id}	Busca sensor por ID
-PUT	/api/Sensor/{id}	Atualiza sensor por ID
-DELETE	/api/Sensor/{id}	Deleta sensor por ID
+| Método | Rota                     | Descrição               |
+|--------|--------------------------|-------------------------|
+| GET    | /api/Sensor            | Lista todos sensores     |
+| POST   | /api/Sensor            | Cria novo sensor         |
+| GET    | /api/Sensor/{id}       | Busca sensor por ID      |
+| PUT    | /api/Sensor/{id}       | Atualiza sensor por ID   |
+| DELETE | /api/Sensor/{id}       | Deleta sensor por ID     |
 
-Outras entidades como Moto, Operador e Vaga possuem rotas CRUD similares.*
+
+*Outras entidades como Moto, Operador e Vaga possuem rotas CRUD similares.*
 
 ---
 
